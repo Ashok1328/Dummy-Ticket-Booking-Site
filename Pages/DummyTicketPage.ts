@@ -122,7 +122,7 @@ export class DummyTicketPage extends BasePage {
   }
 
   async verifyFirstNameRequiredError() {
-    const error = this.page.locator("#travname_error");
+    const error = this.page.locator("#travname_description");
 
     await expect(error).toBeVisible();
 
@@ -130,7 +130,7 @@ export class DummyTicketPage extends BasePage {
   }
 
   async verifyLastNameRequiredError() {
-    const error = this.page.locator("#travlastname_error");
+    const error = this.page.locator("#travlastname_description");
 
     await expect(error).toBeVisible();
 
@@ -138,7 +138,7 @@ export class DummyTicketPage extends BasePage {
   }
 
   async verifyEmailRequiredError() {
-    const error = this.page.locator("#billing_email_error");
+    const error = this.page.locator("#billing_email_description");
 
     await expect(error).toBeVisible();
 
@@ -146,7 +146,7 @@ export class DummyTicketPage extends BasePage {
   }
 
   async verifyPhoneRequiredError() {
-    const error = this.page.locator("#billing_phone_error");
+    const error = this.page.locator("#billing_phone_description");
 
     await expect(error).toBeVisible();
 
