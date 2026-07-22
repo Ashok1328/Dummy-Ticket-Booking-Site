@@ -15,10 +15,12 @@ export class DummyTicketPage extends BasePage {
     );
   }
 
+  // select product 
   async selectProduct() {
     await this.page.locator("#product_7441").check();
   }
 
+  //fill the first passenger details 
   async fillPassenger1(data: any) {
     await this.page.locator("#travname").fill(data.firstName);
 
@@ -35,6 +37,7 @@ export class DummyTicketPage extends BasePage {
     await this.page.locator("#sex_2").check();
   }
 
+  // add more passenger
   async addPassenger() {
     await this.page.locator("#addmorepax").check();
 
@@ -47,6 +50,7 @@ export class DummyTicketPage extends BasePage {
     await input.press("Enter");
   }
 
+  // fill the another passenger details
   async fillPassenger2(data: any) {
     await this.page.locator("#travname2").fill(data.firstName);
 
@@ -61,6 +65,7 @@ export class DummyTicketPage extends BasePage {
     await this.page.locator("#sex2_1").check();
   }
 
+  // select passenger type
   async selectPassengerType() {
     await this.page.locator("#select2-paxtype2-container").click();
 
@@ -71,6 +76,7 @@ export class DummyTicketPage extends BasePage {
     await input.press("Enter");
   }
 
+  // fill the travel details 
   async fillTravelDetails(data: any) {
     await this.page.locator("#traveltype_2").check();
 
@@ -79,6 +85,7 @@ export class DummyTicketPage extends BasePage {
     await this.page.locator("#tocity").fill(data.to);
   }
 
+  // fill the billing details
   async fillBillingDetails(data: any) {
     await this.page.locator("#billname").fill(data.name);
 
@@ -101,10 +108,12 @@ export class DummyTicketPage extends BasePage {
     await this.page.locator("#billing_city").fill(data.city);
   }
 
+  // add notes
   async addNotes(notes: string) {
     await this.page.locator("#notes").fill(notes);
   }
 
+  //fill the card detils for the payment 
   async fillCardDetails() {
     const frame = this.page.frameLocator(
       "iframe[title='Secure payment input frame']",
@@ -117,10 +126,12 @@ export class DummyTicketPage extends BasePage {
     await frame.locator("#payment-cvcInput").fill("123");
   }
 
+  // place the order 
   async placeOrder() {
     await this.page.locator("#place_order").click();
   }
 
+  // verify the first name error is displayed if it it not filled
   async verifyFirstNameRequiredError() {
     const error = this.page.locator("#travname_description");
 
@@ -129,6 +140,7 @@ export class DummyTicketPage extends BasePage {
     await expect(error).toHaveText("This field is required.");
   }
 
+  // verify the last name error is displayed if it is not filled
   async verifyLastNameRequiredError() {
     const error = this.page.locator("#travlastname_description");
 
@@ -137,6 +149,7 @@ export class DummyTicketPage extends BasePage {
     await expect(error).toHaveText("This field is required.");
   }
 
+  // verify the email error is dispalyed if it is not filled or missing 
   async verifyEmailRequiredError() {
     const error = this.page.locator("#billing_email_description");
 
@@ -145,6 +158,7 @@ export class DummyTicketPage extends BasePage {
     await expect(error).toHaveText("This field is required.");
   }
 
+  // verify that the phone number is requird field and diplays error on missing
   async verifyPhoneRequiredError() {
     const error = this.page.locator("#billing_phone_description");
 
