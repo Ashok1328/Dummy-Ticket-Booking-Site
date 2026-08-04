@@ -10,6 +10,9 @@ test("Verify required field validations", async ({ page }) => {
   // Select product
   await dummyTicket.selectProduct();
 
+  // Select PayPal payment method (to bypass Stripe card client-side block and run server-side WooCommerce check)
+  await dummyTicket.selectPayPal();
+
   // Click place order without filling fields
   await dummyTicket.placeOrder();
 

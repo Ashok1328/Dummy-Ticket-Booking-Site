@@ -20,6 +20,11 @@ export class DummyTicketPage extends BasePage {
     await this.page.locator("#product_7441").check();
   }
 
+  // select PayPal payment method
+  async selectPayPal() {
+    await this.page.locator("#payment_method_paypal").click();
+  }
+
   //fill the first passenger details 
   async fillPassenger1(data: any) {
     await this.page.locator("#travname").fill(data.firstName);
@@ -137,7 +142,7 @@ export class DummyTicketPage extends BasePage {
 
     await expect(error).toBeVisible();
 
-    await expect(error).toHaveText("This field is required.");
+    await expect(error).toContainText("First / Given name is a required field.");
   }
 
   // verify the last name error is displayed if it is not filled
@@ -146,7 +151,7 @@ export class DummyTicketPage extends BasePage {
 
     await expect(error).toBeVisible();
 
-    await expect(error).toHaveText("This field is required.");
+    await expect(error).toContainText("Last / Surname is a required field.");
   }
 
   // verify the email error is dispalyed if it is not filled or missing 
@@ -155,7 +160,7 @@ export class DummyTicketPage extends BasePage {
 
     await expect(error).toBeVisible();
 
-    await expect(error).toHaveText("This field is required.");
+    await expect(error).toContainText("Billing Email address is a required field.");
   }
 
   // verify that the phone number is requird field and diplays error on missing
@@ -164,6 +169,6 @@ export class DummyTicketPage extends BasePage {
 
     await expect(error).toBeVisible();
 
-    await expect(error).toHaveText("This field is required.");
+    await expect(error).toContainText("Billing Phone is a required field.");
   }
 }
